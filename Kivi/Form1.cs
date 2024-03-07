@@ -605,12 +605,12 @@ namespace Kivi
                 }
             }
             dice.Clear();
-            rerollsCounter = 5;
+            rerollsCounter = 3;
 
 
             buttonClickStates[clickedButton] = true;
         }
-        int rerollsCounter = 5;
+        int rerollsCounter = 3;
 
         private void Reroll_Click(object sender, EventArgs e)
         {

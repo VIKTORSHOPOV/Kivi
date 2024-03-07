@@ -42,10 +42,12 @@ namespace Kivi
             {
                 button.BackColor = Color.Blue;
                 button.FlatStyle = FlatStyle.Flat;
-                button.FlatAppearance.BorderColor = Color.Lime;
+                button.FlatAppearance.BorderColor = Color.FromArgb(255, 64, 224, 208); //Turquoise
+                //button.FlatAppearance.BorderColor = Color.Lime;
                 button.FlatAppearance.BorderSize = 2;
                 button.Enabled = true;
                 button.Cursor = Cursors.Hand;
+
             }
             else
             {
