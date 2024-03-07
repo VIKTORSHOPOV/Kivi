@@ -532,8 +532,63 @@ namespace Kivi
             (new System.Media.SoundPlayer(Properties.Resources.Menu_Selection_Sound_Effect__mp3cut_net_)).Play();
             Button clickedButton = sender as Button;
 
+            
+            string[] buttonNameParts = clickedButton.Name.Split('n');
+            int buttonNumber = int.Parse(buttonNameParts[1]);
+            int buttonRow = (buttonNumber - 1) / 7;
+            int buttonColumn = (buttonNumber - 1) % 7;
+            string color = (turn == 0) ? "red" : "blue";
+            int buttonPoints;
+            switch (buttonNumber)
+            {
+                case 1:
+                case 4:
+                case 7:
+                case 10:
+                case 12:
+                case 15:
+                case 21:
+                case 23:
+                case 27:
+                case 29:
+                case 35:
+                case 38:
+                case 40:
+                case 43:
+                case 46:
+                case 49:
+                    buttonPoints = 1; break;
+                case 2:
+                case 3:
+                case 5:
+                case 6:
+                case 8:
+                case 14:
+                case 16:
+                case 17:
+                case 18:
+                case 20:
+                case 22:
+                case 24:
+                case 26:
+                case 28:
+                case 30:
+                case 32:
+                case 33:
+                case 34:
+                case 36:
+                case 42:
+                case 44:
+                case 45:
+                case 47:
+                case 48:
+                    buttonPoints = 2; break;
 
+                default: buttonPoints = 3; break;
+            }
+            gridAndColors[(buttonRow, buttonColumn)] = (buttonPoints, color);
 
+            listBox1.Items.Add($"{buttonRow} {buttonColumn} = {buttonPoints} {color}");
             Label selectedStone = GetAvailableStone(turn == 0 ? availableRedStones : availableBlueStones);
             if (selectedStone != null)
             {
@@ -551,7 +606,7 @@ namespace Kivi
             dice.Clear();
             rerollsCounter = 5;
 
-            // Set the click state of the button to true after it's clicked
+            
             buttonClickStates[clickedButton] = true;
         }
         int rerollsCounter = 5;
@@ -598,6 +653,14 @@ namespace Kivi
                     Controls["Dice" + (i + 1)].BackgroundImage = image;
                 }
             }
+
+        }
+
+
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
 
         }
     }

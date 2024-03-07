@@ -109,6 +109,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // Dice1
@@ -1050,6 +1051,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(790, 370);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(566, 173);
+            this.listBox1.TabIndex = 78;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1057,6 +1066,7 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1426, 721);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.labelTurn);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
@@ -1227,6 +1237,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label labelTurn;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
