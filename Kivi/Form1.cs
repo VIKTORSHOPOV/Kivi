@@ -532,7 +532,7 @@ namespace Kivi
             (new System.Media.SoundPlayer(Properties.Resources.Menu_Selection_Sound_Effect__mp3cut_net_)).Play();
             Button clickedButton = sender as Button;
 
-            
+
             string[] buttonNameParts = clickedButton.Name.Split('n');
             int buttonNumber = int.Parse(buttonNameParts[1]);
             int buttonRow = (buttonNumber - 1) / 7;
@@ -588,7 +588,8 @@ namespace Kivi
             }
             gridAndColors[(buttonRow, buttonColumn)] = (buttonPoints, color);
 
-            listBox1.Items.Add($"{buttonRow} {buttonColumn} = {buttonPoints} {color}");
+            listBox1.Items.Add($"{buttonRow} {buttonColumn} -> {buttonPoints} {color}");
+
             Label selectedStone = GetAvailableStone(turn == 0 ? availableRedStones : availableBlueStones);
             if (selectedStone != null)
             {
@@ -606,7 +607,7 @@ namespace Kivi
             dice.Clear();
             rerollsCounter = 5;
 
-            
+
             buttonClickStates[clickedButton] = true;
         }
         int rerollsCounter = 5;
