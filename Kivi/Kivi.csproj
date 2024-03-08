@@ -207,5 +207,14 @@
   <ItemGroup>
     <None Include="Resources\Menu Selection Sound Effect %28mp3cut.net%29.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yeet.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Discord Notification.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plants Vs Zombies Victory Jingle.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

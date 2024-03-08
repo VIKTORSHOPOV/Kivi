@@ -36,7 +36,7 @@ namespace Kivi
 
         }
 
-
+        int totalTurns = 0;
         int turn = 0;
         int roll2;
 
@@ -49,10 +49,12 @@ namespace Kivi
 
         Dictionary<Button, bool> buttonClickStates = new Dictionary<Button, bool>();
 
+        Bitmap[] buttonBackgroundBitmaps = new Bitmap[49];
+
 
         public void Form1_Load(object sender, EventArgs e)
         {
-
+            // Make Red Stones
             for (int i = 2; i <= 11; i++)
             {
                 Label label = Controls.Find("label" + i.ToString(), true).FirstOrDefault() as Label;
@@ -62,7 +64,7 @@ namespace Kivi
                     availableRedStones.Add(label);
                 }
             }
-
+            // Make Blue Stones
             for (int i = 12; i <= 21; i++)
             {
                 Label label = Controls.Find("label" + i.ToString(), true).FirstOrDefault() as Label;
@@ -80,6 +82,8 @@ namespace Kivi
                     gridAndColors[(i, j)] = (0, "neutral");
                 }
             }
+
+
 
         }
 
@@ -606,8 +610,16 @@ namespace Kivi
             }
             dice.Clear();
             rerollsCounter = 3;
+            totalTurns++;
+            if (totalTurns == 20)
+            {
+                (new System.Media.SoundPlayer(Properties.Resources.Plants_Vs_Zombies_Victory_Jingle)).Play();
+                labelTurn.Text = "GAME OVER";
+                labelTurn.ForeColor = Color.Gold;
+                Reroll.Enabled = false;
+                buttonDeleteStone.Enabled = false;
 
-
+            }
             buttonClickStates[clickedButton] = true;
         }
         int rerollsCounter = 3;
@@ -663,6 +675,67 @@ namespace Kivi
         {
 
 
+        }
+
+        private void buttonDeleteStone_Click(object sender, EventArgs e)
+        {
+            (new System.Media.SoundPlayer(Properties.Resources.yeet)).Play();
+
+
+            Label selectedStone = GetAvailableStone(turn == 0 ? availableRedStones : availableBlueStones);
+            if (selectedStone != null)
+            {
+                selectedStone.Location = new Point(-10000, -10000);
+                turn = 1 - turn;
+            }
+
+            foreach (Control control in Controls)
+            {
+                if (control is Button button && button.Name.StartsWith("Dice") && int.TryParse(button.Name.Replace("Dice", ""), out int number) && number >= 1 && number <= 6)
+                {
+                    button.BackgroundImage = null;
+                }
+            }
+            dice.Clear();
+            rerollsCounter = 3;
+            totalTurns++;
+            if (totalTurns == 20)
+            {
+                (new System.Media.SoundPlayer(Properties.Resources.Plants_Vs_Zombies_Victory_Jingle)).Play();
+                labelTurn.Text = "GAME OVER";
+                labelTurn.ForeColor = Color.Gold;
+                Reroll.Enabled = false;
+                buttonDeleteStone.Enabled = false;
+            }
+        }
+
+        private void buttonTheme_Click(object sender, EventArgs e)
+        {
+            (new System.Media.SoundPlayer(Properties.Resources.Discord_Notification)).Play();
+            // Save buttons loaded images to bitmaps
+            int randomDegree = new Random().Next(0, 361);
+            for (int i = 1; i <= 49; i++)
+            {
+                string buttonName = "button" + i;
+                Control[] controls = this.Controls.Find(buttonName, true);
+                Button currentButton = (Button)controls[0];
+                //buttonBackgroundBitmaps[i - 1] = new Bitmap(currentButton.BackgroundImage);
+
+                currentButton.BackgroundImage = Styler.HueShift(new Bitmap(currentButton.BackgroundImage), randomDegree);
+            }
+        }
+
+        private void endGame()
+        {
+            (new System.Media.SoundPlayer(Properties.Resources.Plants_Vs_Zombies_Victory_Jingle)).Play();
+            labelTurn.Text = "GAME OVER";
+            labelTurn.ForeColor = Color.Gold;
+            Reroll.Enabled = false;
+            buttonDeleteStone.Enabled = false;
+            for (int i = 0; i < 6; i++)
+            {
+                Controls["Dice" + (i + 1)].Enabled = false;
+            }
         }
     }
 }

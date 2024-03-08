@@ -59,6 +59,8 @@
             this.label21 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.labelTurn = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buttonDeleteStone = new System.Windows.Forms.Button();
             this.Reroll = new System.Windows.Forms.Button();
             this.button49 = new System.Windows.Forms.Button();
             this.button48 = new System.Windows.Forms.Button();
@@ -109,7 +111,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buttonTheme = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Dice1
@@ -395,6 +397,24 @@
             this.labelTurn.TabIndex = 77;
             this.labelTurn.Text = "TURN";
             this.labelTurn.Click += new System.EventHandler(this.label22_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(790, 370);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(566, 95);
+            this.listBox1.TabIndex = 78;
+            // 
+            // buttonDeleteStone
+            // 
+            this.buttonDeleteStone.Location = new System.Drawing.Point(967, 501);
+            this.buttonDeleteStone.Name = "buttonDeleteStone";
+            this.buttonDeleteStone.Size = new System.Drawing.Size(170, 57);
+            this.buttonDeleteStone.TabIndex = 79;
+            this.buttonDeleteStone.Text = "YEET Stone";
+            this.buttonDeleteStone.UseVisualStyleBackColor = true;
+            this.buttonDeleteStone.Click += new System.EventHandler(this.buttonDeleteStone_Click);
             // 
             // Reroll
             // 
@@ -1051,13 +1071,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listBox1
+            // buttonTheme
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(790, 370);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(566, 173);
-            this.listBox1.TabIndex = 78;
+            this.buttonTheme.Location = new System.Drawing.Point(1384, 7);
+            this.buttonTheme.Name = "buttonTheme";
+            this.buttonTheme.Size = new System.Drawing.Size(30, 30);
+            this.buttonTheme.TabIndex = 80;
+            this.buttonTheme.Text = "!";
+            this.buttonTheme.UseVisualStyleBackColor = true;
+            this.buttonTheme.Click += new System.EventHandler(this.buttonTheme_Click);
             // 
             // Form1
             // 
@@ -1066,6 +1088,8 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1426, 721);
+            this.Controls.Add(this.buttonTheme);
+            this.Controls.Add(this.buttonDeleteStone);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.labelTurn);
             this.Controls.Add(this.label12);
@@ -1238,6 +1262,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label labelTurn;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button buttonDeleteStone;
+        private System.Windows.Forms.Button buttonTheme;
     }
 }
 

@@ -309,6 +309,15 @@ namespace Kivi.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Discord_Notification {
+            get {
+                return ResourceManager.GetStream("Discord_Notification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap even {
@@ -338,6 +347,15 @@ namespace Kivi.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Plants_Vs_Zombies_Victory_Jingle {
+            get {
+                return ResourceManager.GetStream("Plants_Vs_Zombies_Victory_Jingle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap roll {
@@ -353,6 +371,15 @@ namespace Kivi.Properties {
         internal static System.IO.UnmanagedMemoryStream select_sound_121244 {
             get {
                 return ResourceManager.GetStream("select_sound_121244", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream yeet {
+            get {
+                return ResourceManager.GetStream("yeet", resourceCulture);
             }
         }
     }

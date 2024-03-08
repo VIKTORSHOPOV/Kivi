@@ -208,4 +208,13 @@
   <data name="Menu_Selection_Sound_Effect__mp3cut_net_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Menu Selection Sound Effect (mp3cut.net).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="yeet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeet.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Discord_Notification" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Discord Notification.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Plants_Vs_Zombies_Victory_Jingle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plants Vs Zombies Victory Jingle.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
