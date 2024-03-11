@@ -102,17 +102,27 @@ namespace Kivi
             hue = 0;
             if (delta != 0)
             {
+                float deltaR = (max - r) / delta;
+                float deltaG = (max - g) / delta;
+                float deltaB = (max - b) / delta;
+
                 if (max == r)
                 {
-                    hue = 60 * (((g - b) / delta) % 6);
+                    hue = deltaB - deltaG;
                 }
                 else if (max == g)
                 {
-                    hue = 60 * (((b - r) / delta) + 2);
+                    hue = 2f + deltaR - deltaB;
                 }
-                else if (max == b)
+                else
                 {
-                    hue = 60 * (((r - g) / delta) + 4);
+                    hue = 4f + deltaG - deltaR;
+                }
+
+                hue *= 60;
+                if (hue < 0)
+                {
+                    hue += 360;
                 }
             }
         }
@@ -123,40 +133,34 @@ namespace Kivi
             float m = lightness - c / 2;
 
             float r = 0, g = 0, b = 0;
-            if (0 <= hue && hue < 60)
+            if (hue >= 0 && hue < 60)
             {
                 r = c;
                 g = x;
-                b = 0;
             }
-            else if (60 <= hue && hue < 120)
+            else if (hue >= 60 && hue < 120)
             {
                 r = x;
                 g = c;
-                b = 0;
             }
-            else if (120 <= hue && hue < 180)
+            else if (hue >= 120 && hue < 180)
             {
-                r = 0;
                 g = c;
                 b = x;
             }
-            else if (180 <= hue && hue < 240)
+            else if (hue >= 180 && hue < 240)
             {
-                r = 0;
                 g = x;
                 b = c;
             }
-            else if (240 <= hue && hue < 300)
+            else if (hue >= 240 && hue < 300)
             {
                 r = x;
-                g = 0;
                 b = c;
             }
-            else if (300 <= hue && hue < 360)
+            else
             {
                 r = c;
-                g = 0;
                 b = x;
             }
 

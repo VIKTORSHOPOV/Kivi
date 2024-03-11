@@ -502,11 +502,11 @@ namespace Kivi
             Styler.ButtonShine(button48, Logic.AAAA(diceValues), buttonClickStates[button48]);
             Styler.ButtonShine(button49, Logic.AAABB(diceValues), buttonClickStates[button49]);
 
-            if (turn == 0)
+            if (turn == 0 && totalTurns != 20)
             {
                 labelTurn.ForeColor = Color.Red;
             }
-            else
+            else if (turn == 1 && totalTurns != 20)
             {
                 labelTurn.ForeColor = Color.Blue;
             }
@@ -590,11 +590,13 @@ namespace Kivi
 
                 default: buttonPoints = 3; break;
             }
+
             gridAndColors[(buttonRow, buttonColumn)] = (buttonPoints, color);
 
             listBox1.Items.Add($"{buttonRow} {buttonColumn} -> {buttonPoints} {color}");
 
             Label selectedStone = GetAvailableStone(turn == 0 ? availableRedStones : availableBlueStones);
+
             if (selectedStone != null)
             {
                 selectedStone.Location = new Point(clickedButton.Location.X + clickedButton.Width / 2 - selectedStone.Width / 2, clickedButton.Location.Y + clickedButton.Height / 2 - selectedStone.Height / 2);
@@ -614,8 +616,8 @@ namespace Kivi
             if (totalTurns == 20)
             {
                 (new System.Media.SoundPlayer(Properties.Resources.Plants_Vs_Zombies_Victory_Jingle)).Play();
-                labelTurn.Text = "GAME OVER";
-                labelTurn.ForeColor = Color.Gold;
+                labelTurn.Text = $"GAME OVER \n {Logic.EndResults(gridAndColors)[0]} - {Logic.EndResults(gridAndColors)[1]}";
+                labelTurn.ForeColor = Color.Lime;
                 Reroll.Enabled = false;
                 buttonDeleteStone.Enabled = false;
 
@@ -644,7 +646,7 @@ namespace Kivi
 
 
             Random random = new Random();
-            // Assuming you've added your audio files as "dieThrow1" and "dieThrow2" in resources
+
             var soundPlayer = new System.Media.SoundPlayer(random.Next(2) == 0 ? Properties.Resources.dieThrow1 : Properties.Resources.dieThrow2);
             soundPlayer.Play();
 
@@ -702,8 +704,8 @@ namespace Kivi
             if (totalTurns == 20)
             {
                 (new System.Media.SoundPlayer(Properties.Resources.Plants_Vs_Zombies_Victory_Jingle)).Play();
-                labelTurn.Text = "GAME OVER";
-                labelTurn.ForeColor = Color.Gold;
+                labelTurn.Text = $"GAME OVER \n {Logic.EndResults(gridAndColors)[0]} - {Logic.EndResults(gridAndColors)[1]}";
+                labelTurn.ForeColor = Color.Lime;
                 Reroll.Enabled = false;
                 buttonDeleteStone.Enabled = false;
             }
@@ -711,7 +713,7 @@ namespace Kivi
 
         private void buttonTheme_Click(object sender, EventArgs e)
         {
-            (new System.Media.SoundPlayer(Properties.Resources.Discord_Notification)).Play();
+
             // Save buttons loaded images to bitmaps
             int randomDegree = new Random().Next(0, 361);
             for (int i = 1; i <= 49; i++)
@@ -723,20 +725,10 @@ namespace Kivi
 
                 currentButton.BackgroundImage = Styler.HueShift(new Bitmap(currentButton.BackgroundImage), randomDegree);
             }
+            (new System.Media.SoundPlayer(Properties.Resources.Discord_Notification)).Play();
         }
 
-        private void endGame()
-        {
-            (new System.Media.SoundPlayer(Properties.Resources.Plants_Vs_Zombies_Victory_Jingle)).Play();
-            labelTurn.Text = "GAME OVER";
-            labelTurn.ForeColor = Color.Gold;
-            Reroll.Enabled = false;
-            buttonDeleteStone.Enabled = false;
-            for (int i = 0; i < 6; i++)
-            {
-                Controls["Dice" + (i + 1)].Enabled = false;
-            }
-        }
+
     }
 }
 

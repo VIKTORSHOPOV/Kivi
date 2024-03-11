@@ -223,5 +223,172 @@ namespace Kivi
 
             return threeCount >= 1 && twoCount >= 1;
         } //works
+
+        public static List<int> EndResults(Dictionary<(int, int), (int, string)> gridAndColors)
+        {
+            int pointsRed = 0;
+            Dictionary<(int, int), int> redValues = new Dictionary<(int, int), int>();
+            int pointsBlue = 0;
+            Dictionary<(int, int), int> blueValues = new Dictionary<(int, int), int>();
+            //populate the new dictionaries
+            foreach (var kvp in gridAndColors)
+            {
+                if (kvp.Value.Item2 == "red" || kvp.Value.Item2 == "neutral")
+                {
+                    redValues.Add(kvp.Key, kvp.Value.Item1);
+                }
+                else if (kvp.Value.Item2 == "blue" || kvp.Value.Item2 == "neutral")
+                {
+                    blueValues.Add(kvp.Key, kvp.Value.Item1);
+                }
+            }
+            int[,] arrayRed = new int[7, 7];
+            foreach (var kvp in redValues)
+            {
+                arrayRed[kvp.Key.Item1, kvp.Key.Item2] = kvp.Value;
+            }
+            int[,] arrayBlue = new int[7, 7];
+            foreach (var kvp in blueValues)
+            {
+                arrayBlue[kvp.Key.Item1, kvp.Key.Item2] = kvp.Value;
+            }
+
+            //Rows red
+            for (int i = 0; i < 7; i++)
+            {
+                int[] row = new int[7];
+                for (int j = 0; j < 7; j++)
+                {
+                    row[j] = arrayRed[i, j];
+                }
+
+                pointsRed += CalculateTotalPointsPerRow(row);
+            }
+            //Rows blue
+            for (int i = 0; i < 7; i++)
+            {
+                int[] row = new int[7];
+                for (int j = 0; j < 7; j++)
+                {
+                    row[j] = arrayBlue[i, j];
+                }
+
+                pointsBlue += CalculateTotalPointsPerRow(row);
+            }
+            //Columns Red
+            for (int j = 0; j < 7; j++)
+            {
+                int[] column = new int[7];
+                for (int i = 0; i < 7; i++)
+                {
+                    column[i] = arrayRed[i, j];
+                }
+
+                pointsRed += CalculateTotalPointsPerColumn(column);
+            }
+            //Columns Blue
+            for (int j = 0; j < 7; j++)
+            {
+                int[] column = new int[7];
+                for (int i = 0; i < 7; i++)
+                {
+                    column[i] = arrayBlue[i, j];
+                }
+
+                pointsBlue += CalculateTotalPointsPerColumn(column);
+            }
+
+
+
+
+
+            List<int> results = new List<int>
+            {
+                pointsRed, pointsBlue
+            };
+
+
+
+            return results;
+        }
+
+        static int CalculateTotalPointsPerRow(int[] array)
+        {
+            List<int> currentGroup = new List<int>();
+            int totalPoints = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] != 0)
+                {
+                    currentGroup.Add(array[i]);
+                }
+                else
+                {
+                    if (currentGroup.Count > 0)
+                    {
+                        int sum = 0;
+                        foreach (int value in currentGroup)
+                        {
+                            sum += value;
+                        }
+                        totalPoints += sum * currentGroup.Count;
+                        currentGroup.Clear();
+                    }
+                }
+            }
+
+            if (currentGroup.Count > 0)
+            {
+                int sum = 0;
+                foreach (int value in currentGroup)
+                {
+                    sum += value;
+                }
+                totalPoints += sum * currentGroup.Count;
+            }
+
+            return totalPoints;
+        }
+
+        static int CalculateTotalPointsPerColumn(int[] array)
+        {
+            List<int> currentGroup = new List<int>();
+            int totalPoints = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] != 0)
+                {
+                    currentGroup.Add(array[i]);
+                }
+                else
+                {
+                    if (currentGroup.Count >= 2) // Modified condition to check if the group has 2 or more elements
+                    {
+                        int sum = 0;
+                        foreach (int value in currentGroup)
+                        {
+                            sum += value;
+                        }
+                        totalPoints += sum * currentGroup.Count;
+                    }
+                    currentGroup.Clear();
+                }
+            }
+
+            if (currentGroup.Count >= 2) // Check for remaining group after loop
+            {
+                int sum = 0;
+                foreach (int value in currentGroup)
+                {
+                    sum += value;
+                }
+                totalPoints += sum * currentGroup.Count;
+            }
+
+            return totalPoints;
+        }
+
     }
 }

@@ -389,22 +389,23 @@
             // 
             // labelTurn
             // 
-            this.labelTurn.AutoSize = true;
             this.labelTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTurn.Location = new System.Drawing.Point(1019, 342);
+            this.labelTurn.Location = new System.Drawing.Point(962, 324);
             this.labelTurn.Name = "labelTurn";
-            this.labelTurn.Size = new System.Drawing.Size(70, 25);
+            this.labelTurn.Size = new System.Drawing.Size(182, 83);
             this.labelTurn.TabIndex = 77;
             this.labelTurn.Text = "TURN";
+            this.labelTurn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelTurn.Click += new System.EventHandler(this.label22_Click);
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(790, 370);
+            this.listBox1.Location = new System.Drawing.Point(790, 452);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(566, 95);
+            this.listBox1.Size = new System.Drawing.Size(566, 43);
             this.listBox1.TabIndex = 78;
+            this.listBox1.Visible = false;
             // 
             // buttonDeleteStone
             // 
