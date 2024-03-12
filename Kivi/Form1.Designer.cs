@@ -409,11 +409,12 @@
             // 
             // buttonDeleteStone
             // 
+            this.buttonDeleteStone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDeleteStone.Location = new System.Drawing.Point(967, 501);
             this.buttonDeleteStone.Name = "buttonDeleteStone";
             this.buttonDeleteStone.Size = new System.Drawing.Size(170, 57);
             this.buttonDeleteStone.TabIndex = 79;
-            this.buttonDeleteStone.Text = "YEET Stone";
+            this.buttonDeleteStone.Text = "Discard Stone";
             this.buttonDeleteStone.UseVisualStyleBackColor = true;
             this.buttonDeleteStone.Click += new System.EventHandler(this.buttonDeleteStone_Click);
             // 
